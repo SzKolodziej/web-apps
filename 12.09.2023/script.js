@@ -26,4 +26,4 @@ const f2 = () => {
     f1(year, num)
 }
 
-setInterval(f2, 10000)
+setInterval(f2, 60000)
