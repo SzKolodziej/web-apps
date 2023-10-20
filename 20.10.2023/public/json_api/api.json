@@ -1,0 +1,10 @@
+{
+  "students": {
+    "url": "api/students",
+    "description": "coś sie wymiśli"
+  },
+  "subjects": {
+    "url": "api/subjects",
+    "description": "cos sie wymisli"
+  }
+}

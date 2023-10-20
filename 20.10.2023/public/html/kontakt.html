@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt</title>
+
+    <style>
+        input, select{
+            margin: 2px;
+        }
+
+        textarea{
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Kontakt</h1>
+<form id="form" name="form" method="post" action="/kontakt">
+    <label>imię:<input type="text" name="imie"></label>
+    <br>
+    <label>email:<input type="email" name="email"></label>
+    <br>
+    <select name="select">
+        <option value="Bulbasaur">Bulbasaur</option>
+        <option value="Charmander">Charmander</option>
+        <option value="Squirtle">Squirtle</option>
+        <option value="Pikachu">Pikachu</option>
+    </select>
+    <br>
+    <label>Tekst wiadomości: <br><textarea name="textarea"></textarea></label>
+    <br>
+    <input type="submit" value="Submit" name="submit">
+</form>
+
+<!--<script src="../js/prevent_form.js"></script>-->
+
+</body>
+</html>
