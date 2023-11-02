@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Język polski",
+    "hoursAWeek": 3
+  },
+  {
+    "id": 2,
+    "name": "PAW",
+    "hoursAWeek": 4
+  },
+  {
+    "id": 3,
+    "name": "PAM",
+    "hoursAWeek": 4
+  },
+  {
+    "id": 4,
+    "name": "PAD",
+    "hoursAWeek": 4
+  },
+  {
+    "id": 5,
+    "name": "Matematyka",
+    "hoursAWeek": 4
+  },
+  {
+    "id": 6,
+    "name": "Geografia",
+    "hoursAWeek": 1
+  },
+  {
+    "id": 7,
+    "name": "Język angielski",
+    "hoursAWeek": 3
+  },
+  {
+    "id": 8,
+    "name": "Historia",
+    "hoursAWeek": 1
+  },
+  {
+    "id": 9,
+    "name": "Język niemiecki",
+    "hoursAWeek": 1
+  },
+  {
+    "id": 10,
+    "name": "TiDA",
+    "hoursAWeek": 2
+  }
+]
