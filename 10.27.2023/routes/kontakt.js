@@ -3,12 +3,12 @@ const router = Router()
 const path = require('path')
 const {createConnection, Connection, MysqlError} = require('mysql')
 
-router.get('/kontakt', (req, res)=>
+router.get('/', (req, res)=>
 {
     res.sendFile(path.join(__dirname, '../public/html/kontakt.html'))
 })
 
-router.post('/kontakt', (req, res)=>
+router.post('/', (req, res)=>
 {
     console.log(req.body)
 

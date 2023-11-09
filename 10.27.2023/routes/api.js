@@ -2,6 +2,8 @@ const {Router} = require('express')
 const router = Router()
 const path = require('path')
 const fs = require("fs/promises");
+const {createConnection, connect, MysqlError} = require('mysql')
+const createDbConnection = require('./db_connection')
 
 router.get('/', async(req, res)=>
 {
@@ -13,51 +15,118 @@ router.get('/', async(req, res)=>
 //api students
 router.get('/students', async(req, res)=>
 {
-    let jsonData = await fs.readFile(path.join(__dirname, '../jsons/students.json'))
-    jsonData = JSON.parse(jsonData)
-    res.json(jsonData)
+    /*const connection = createConnection({
+        host: '172.29.0.1',
+        user: 'root',
+        password: '',
+        database: 'db1'
+    })*/
+    const connection = createDbConnection()
+
+    connection.connect(async(MysqlError)=>
+    {
+        if(MysqlError)
+        {
+            throw MysqlError
+        }
+
+        const sql = 'SELECT * FROM students'
+        await connection.query(sql, (MysqlError, result)=>
+        {
+            if(MysqlError)throw MysqlError
+            res.json(result)
+        })
+        connection.end()
+    })
 })
 
 router.get('/students/:id', async(req, res)=>
 {
-    let jsonData = await fs.readFile(path.join(__dirname, '../jsons/students.json'))
-    jsonData = JSON.parse(jsonData)
-    const studentID = parseInt(req.params.id)
-    const student = jsonData.find(student => student.id === studentID)
+    /*const connection = createConnection({
+        host: '172.29.0.1',
+        user: 'root',
+        password: '',
+        database: 'db1'
+    })*/
+    const connection = createDbConnection()
 
-    if(student)
+    connection.connect(async(MysqlError)=>
     {
-        res.json(student)
-    }
-    else
-    {
-        res.status(404).json({error: 'Student not found'})
-    }
+        if(MysqlError) throw MysqlError
+
+        const sql = `SELECT * FROM students WHERE id=${req.params.id}`
+        await connection.query(sql, (MysqlError, result)=>
+        {
+            if(MysqlError)throw MysqlError
+
+            if(result.length===0)
+            {
+                res.status(404).json({error: 'Student not found'})
+            }
+            else
+            {
+                res.json(result)
+            }
+        })
+        connection.end()
+    })
 })
 
 //api subjects
 router.get('/subjects', async(req, res)=>
 {
-    let jsonData = await fs.readFile(path.join(__dirname, '../jsons/subjects.json'))
-    jsonData = JSON.parse(jsonData)
-    res.json(jsonData)
+    /*const connection = createConnection({
+        host: '172.29.0.1',
+        user: 'root',
+        password: '',
+        database: 'db1'
+    })*/
+    const connection = createDbConnection()
+
+    connection.connect(async(MysqlError)=>
+    {
+        if(MysqlError) throw MysqlError
+
+        const sql = 'SELECT * FROM subjects'
+        await connection.query(sql, (MysqlError, result)=>
+        {
+            if(MysqlError)throw MysqlError
+            res.json(result)
+        })
+        connection.end()
+    })
 })
 
 router.get('/subjects/:id', async(req, res)=>
 {
-    let jsonData = await fs.readFile(path.join(__dirname, '../jsons/subjects.json'))
-    jsonData = JSON.parse(jsonData)
-    const subjectID = parseInt(req.params.id)
-    const subject = jsonData.find(subject => subject.id === subjectID)
+    /*const connection = createConnection({
+        host: '172.29.0.1',
+        user: 'root',
+        password: '',
+        database: 'db1'
+    })*/
+    const connection = createDbConnection()
 
-    if(subject)
+    connection.connect(async(MysqlError)=>
     {
-        res.json(subject)
-    }
-    else
-    {
-        res.status(404).json({error: 'Subject not found'})
-    }
+        if(MysqlError) throw MysqlError
+
+        const sql = `SELECT * FROM subjects WHERE id=${req.params.id}`
+        await connection.query(sql, (MysqlError, result)=>
+        {
+            if(MysqlError)throw MysqlError
+
+            if(result.length===0)
+            {
+                res.status(404).json({error: 'Subjects not found'})
+            }
+            else
+            {
+                res.json(result)
+            }
+        })
+        connection.end()
+    })
 })
 
 module.exports = router
