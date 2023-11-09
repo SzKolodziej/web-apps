@@ -2,7 +2,6 @@ const {Router} = require('express')
 const router = Router()
 const path = require('path')
 const fs = require("fs/promises");
-const {createConnection, connect, MysqlError} = require('mysql')
 const createDbConnection = require('./db_connection')
 
 router.get('/', async(req, res)=>
@@ -15,12 +14,6 @@ router.get('/', async(req, res)=>
 //api students
 router.get('/students', async(req, res)=>
 {
-    /*const connection = createConnection({
-        host: '172.29.0.1',
-        user: 'root',
-        password: '',
-        database: 'db1'
-    })*/
     const connection = createDbConnection()
 
     connection.connect(async(MysqlError)=>
@@ -42,12 +35,6 @@ router.get('/students', async(req, res)=>
 
 router.get('/students/:id', async(req, res)=>
 {
-    /*const connection = createConnection({
-        host: '172.29.0.1',
-        user: 'root',
-        password: '',
-        database: 'db1'
-    })*/
     const connection = createDbConnection()
 
     connection.connect(async(MysqlError)=>
@@ -75,12 +62,6 @@ router.get('/students/:id', async(req, res)=>
 //api subjects
 router.get('/subjects', async(req, res)=>
 {
-    /*const connection = createConnection({
-        host: '172.29.0.1',
-        user: 'root',
-        password: '',
-        database: 'db1'
-    })*/
     const connection = createDbConnection()
 
     connection.connect(async(MysqlError)=>
@@ -99,12 +80,6 @@ router.get('/subjects', async(req, res)=>
 
 router.get('/subjects/:id', async(req, res)=>
 {
-    /*const connection = createConnection({
-        host: '172.29.0.1',
-        user: 'root',
-        password: '',
-        database: 'db1'
-    })*/
     const connection = createDbConnection()
 
     connection.connect(async(MysqlError)=>
