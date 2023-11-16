@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="../css/kontakt.css">
+    <!--Style w większości (jakieś 97%) sciągnięte od Patryka Mendelewskiego)-->
+
+</head>
+<body>
+
+    <form id="form" name="form" method="post" action="/kontakt">
+        <h1>KONTAKT</h1>
+        <label><input type="text" name="imie" placeholder="IMIE"></label>
+        <br>
+        <label><input type="email" name="email" placeholder="EMAIL" required></label>
+        <br>
+        <select name="select" required>
+            <option value="Bulbasaur">Bulbasaur</option>
+            <option value="Charmander">Charmander</option>
+            <option value="Squirtle">Squirtle</option>
+            <option value="Pikachu">Pikachu</option>
+        </select>
+        <br>
+        <label><textarea name="textarea" placeholder="TEKST WIADOMOŚCI" required></textarea></label>
+        <br>
+        <input type="submit" value="Submit" name="submit">
+    </form>
+
+<!--<script src="../js/prevent_form.js"></script>-->
+
+</body>
+</html>
