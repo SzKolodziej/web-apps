@@ -3,7 +3,7 @@ const router = Router()
 const path = require('path')
 const fs = require("fs/promises")
 const {MongoClient, ServerApiVersion} = require('mongodb')
-const password = "PknGQXNmsA2SRr2b"
+const password = ""
 const url = `mongodb+srv://szymonkolo555:${password}@zsk.hdziy8p.mongodb.net/?retryWrites=true&w=majority`
 
 const client = new MongoClient(url, {
