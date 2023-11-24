@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  username String @db.VarChar(50) @unique
+  email String @db.VarChar(50) @unique
+  //one-to-one with Adress
+  Adress Adress?
+  //one-to-many with Order
+  Order Order[]
+}
+
+model Adress{
+  AdressId Int @id @default(autoincrement())
+  UserId Int @unique
+  Street String @db.VarChar(100)
+  City String @db.VarChar(92)
+  ZipCode String @db.VarChar(6)
+  //one-to-one with User
+  User User @relation(fields: [UserId], references: [id])
+}
+
+model Order{
+  OrderId Int @id @default(autoincrement())
+  UserId Int
+  OrderDate DateTime @default(now())
+  //many-to-one with User
+  User User @relation(fields: [UserId], references: [id])
+  //One-to-Many with OrderProduct
+  OrderProduct OrderProduct[]
+}
+
+model Product{
+  ProductID Int @id @default(autoincrement())
+  ProductName String @db.VarChar(250)
+  Price Decimal @db.Decimal()
+  //One-to-Many with OrderProduct
+  OrderProduct OrderProduct[]
+}
+
+//tabela łącznikowa Many-to-Many pomiędzy Product i Order
+model OrderProduct{
+  id Int @id
+  //Many-to-One with Order
+  OrderId Int
+  Order Order @relation(fields: [OrderId], references: [OrderId])
+  //Many-to-One with Product
+  ProductId Int
+  Product Product @relation(fields: [ProductId], references: [ProductID])
+}
