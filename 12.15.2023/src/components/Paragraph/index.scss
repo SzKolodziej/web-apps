@@ -1,0 +1,20 @@
+$paragraphColor: #333;
+
+.paragraph{
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: $paragraphColor;
+
+  &__small{
+    font-size: 1.4rem;
+  }
+
+  &__medium{
+    font-size: 1.6rem;
+  }
+
+  &__large{
+    font-size: 1.8rem;
+  }
+}
