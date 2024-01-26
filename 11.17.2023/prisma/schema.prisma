@@ -38,7 +38,6 @@ model FavouritePokemon {
   TrainerId Int    @unique
   name      String @db.VarChar(50)
   type      String @db.VarChar(50)
-  pokedexId Int    @db.Int
 
   // one-to-one with Trainer
   Trainer Trainer @relation(fields: [TrainerId], references: [id])
