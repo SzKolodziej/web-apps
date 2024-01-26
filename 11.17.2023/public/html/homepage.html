@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <h1>Welcome new Trainer</h1>
+
+    <form id="newTrainerForm" name="newTrainerForm" method="post" action="/">
+        <h2>Create new trainer</h2>
+        <label><input type="text" name="name" placeholder="NAME*" required></label>
+        <br>
+        <label><input type="text" name="surname" placeholder="SURNAME*" required></label>
+        <br>
+        <label>Select your starter:
+        <select name="selectStarter" required>
+            <option value="Bulbasaur">Bulbasaur</option>
+            <option value="Charmander">Charmander</option>
+            <option value="Squirtle">Squirtle</option>
+        </select>
+        </label>
+        <br>
+        <input type="submit" value="Submit" name="submit">
+        <br>
+        <p>fields with '*' are required</p>
+    </form>
+
+</body>
+</html>
