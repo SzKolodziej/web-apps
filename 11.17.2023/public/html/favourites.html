@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favourite Pokémon</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <h1>Favourite Pokémon</h1>
+    <form id="favouriteForm" name="favouriteForm" method="post" action="/favourites">
+        <h2>Tell us your Favourite Pokémon</h2>
+        <label><input type="text" name="trainerId" placeholder="TRAINER ID*" required></label>
+        <br>
+        <label><input type="text" name="pokemonName" placeholder="POKEMON NAME*" required></label>
+        <br>
+        <label><input type="text" name="type" placeholder="TYPE*" required></label>
+        <br>
+        <input type="submit" value="Submit" name="submit">
+        <br>
+        <p>fields with '*' are required</p>
+        <p>If some trainer already have a favourite Pokémon it will be changed</p>
+    </form>
+
+</body>
+</html>
