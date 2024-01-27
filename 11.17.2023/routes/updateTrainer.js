@@ -80,6 +80,22 @@ router.post('/delete', (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const id = yield selectTrainerId(trainerId);
         if (id != null) {
+            const fptid = yield prismaClient.favouritePokemon.findFirst({
+                where: { TrainerId: id.id }
+            });
+            if (fptid != null) {
+                yield prismaClient.favouritePokemon.delete({
+                    where: { TrainerId: id.id }
+                });
+            }
+            const tbid = yield prismaClient.trainersBadges.findFirst({
+                where: { TrainerId: id.id }
+            });
+            if (tbid != null) {
+                yield prismaClient.trainersBadges.deleteMany({
+                    where: { TrainerId: id.id }
+                });
+            }
             yield prismaClient.trainer.delete({
                 where: { id: id.id }
             });

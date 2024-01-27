@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mongo</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <h1>Mongo</h1>
+    <form id="mongoForm" name="mongoForm" method="post" action="/mongo">
+        <h2>Mongo</h2>
+        <label><input type="text" name="name" placeholder="NAME*" required></label>
+        <br>
+        <label><input type="text" name="surname" placeholder="surname*" required></label>
+        <br>
+        <label><input type="number" name="age" placeholder="AGE*" min="0" max="150"></label>
+        <br>
+        <input type="submit" value="Submit" name="submit">
+        <br>
+        <p>fields with '*' are required</p>
+    </form>
+
+</body>
+</html>

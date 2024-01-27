@@ -78,6 +78,26 @@ router.post('/delete', async (req: Request, res: Response)=>{
         const id = await selectTrainerId(trainerId)
 
         if(id != null){
+            const fptid = await prismaClient.favouritePokemon.findFirst({
+                where: {TrainerId: id.id}
+            })
+
+            if(fptid != null){
+                await prismaClient.favouritePokemon.delete({
+                    where:{TrainerId: id.id}
+                })
+            }
+
+            const tbid = await prismaClient.trainersBadges.findFirst({
+                where: {TrainerId: id.id}
+            })
+
+            if(tbid != null){
+                await prismaClient.trainersBadges.deleteMany({
+                    where:{TrainerId: id.id}
+                })
+            }
+
             await prismaClient.trainer.delete({
                 where: {id: id.id}
             })
