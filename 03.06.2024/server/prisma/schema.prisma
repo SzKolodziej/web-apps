@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Trainer {
+  id        Int    @id @default(autoincrement())
+  name      String @db.VarChar(50)
+  surname   String @db.VarChar(50)
+  StarterId Int
+
+  // many-to-one with Starters
+  Starters Starters @relation(fields: [StarterId], references: [id])
+
+  // one-to-one with FavouritePokemon
+  FavouritePokemon FavouritePokemon?
+
+  // one-to-many with TrainersBadges
+  TrainersBadges TrainersBadges[]
+}
+
+model Starters {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(50)
+  type    String    @db.VarChar(50)
+  Trainer Trainer[]
+}
+
+model FavouritePokemon {
+  id        Int    @id @default(autoincrement())
+  TrainerId Int    @unique
+  name      String @db.VarChar(50)
+  type      String @db.VarChar(50)
+
+  // one-to-one with Trainer
+  Trainer Trainer @relation(fields: [TrainerId], references: [id])
+}
+
+// many-to-many with Trainers
+model Badges {
+  id   Int    @id @default(autoincrement())
+  name String @unique @db.VarChar(50)
+
+  // one-to-many with Badges
+  TrainersBadges TrainersBadges[]
+}
+
+// tabela łącznikowa pomiędzy Trainers i Badges
+model TrainersBadges {
+  id Int @id @default(autoincrement())
+
+  // many-to-one with Trainers
+  TrainerId Int
+  Trainer   Trainer @relation(fields: [TrainerId], references: [id])
+
+  // many-to-one with Badges
+  BadgeId Int
+  Badge   Badges @relation(fields: [BadgeId], references: [id])
+}
